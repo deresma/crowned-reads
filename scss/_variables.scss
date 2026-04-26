@@ -1,0 +1,26 @@
+// ===================================
+// CROWNED READS — Design Tokens
+// ===================================
+
+// --- Color Palette (Pastel Romantasy) ---
+$color-cream:        #FAF3E7;   // Soft cream — main background
+$color-blush:        #F5D9D9;   // Pastel pink — accents, hover states
+$color-rose:         #D8A7B1;   // Dusty rose — buttons, highlights
+$color-lavender:     #C9B6D8;   // Soft lavender — secondary accent
+$color-mauve:        #8E6E8A;   // Deep mauve — important text, borders
+$color-plum:         #4A2E4D;   // Rich plum — main headings
+$color-ink:          #2C1B2E;   // Almost-black plum — body text
+$color-gold:         #C9A86A;   // Antique gold — sword, divider lines
+
+// --- Fonts ---
+$font-heading: 'Cormorant Garamond', 'Georgia', serif;   // Italic fantasy feel
+$font-body:    'Lora', 'Georgia', serif;                  // Readable body text
+
+// --- Sizing ---
+$max-width:    1200px;
+$radius-sm:    6px;
+$radius-md:    12px;
+
+// --- Shadows ---
+$shadow-soft:  0 4px 20px rgba(74, 46, 77, 0.08);
+$shadow-medium:0 6px 24px rgba(74, 46, 77, 0.15);

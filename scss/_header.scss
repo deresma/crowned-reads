@@ -1,0 +1,98 @@
+@use 'variables' as *;
+
+// ============== HEADER ==============
+.site-header {
+  background-color: rgba($color-cream, 0.92);
+  border-bottom: 1px solid rgba($color-mauve, 0.15);
+  padding: 1.5rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+}
+
+// ============== LOGO ==============
+.logo {
+  text-decoration: none;
+  display: inline-block;
+
+  &__text {
+    font-family: $font-heading;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 2rem;
+    color: $color-plum;
+    letter-spacing: 0.15em;
+    transition: color 0.3s ease;
+  }
+
+  &:hover &__text {
+    color: $color-mauve;
+  }
+}
+
+// ============== NAVIGATION ==============
+.main-nav {
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__link {
+    font-family: $font-body;
+    font-size: 1rem;
+    color: $color-mauve;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.5rem 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background-color: $color-gold;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: $color-plum;
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// ============== HERO ==============
+.hero {
+  text-align: center;
+  padding: 5rem 0 3rem;
+
+  &__title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: 1.15rem;
+    color: $color-mauve;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    font-style: italic;
+  }
+}

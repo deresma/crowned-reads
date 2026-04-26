@@ -1,0 +1,64 @@
+@use 'variables' as *;
+
+// --- Reset (browser default'larını sıfırlama) ---
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// --- Body ---
+body {
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-ink;
+  background-color: $color-cream;
+  min-height: 100vh;
+}
+
+// --- Headings ---
+h1, h2, h3, h4 {
+  font-family: $font-heading;
+  font-style: italic;
+  color: $color-plum;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.5rem; }
+
+// --- Paragraphs & Links ---
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: $color-mauve;
+  text-decoration: none;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-rose;
+  }
+}
+
+// --- Container Helper ---
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+// --- Decorative Divider ---
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  color: $color-gold;
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+}
