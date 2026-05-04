@@ -110,3 +110,116 @@ function previewRating(container, value) {
     }
   }
 }
+
+// ============================================
+// FEATURE 3: Live Search
+// Module 2 (arrays/objects/strings), Module 3 (input event),
+// Module 4 (loops, if), Module 5 (functions)
+// ============================================
+
+// Book data — in a real app this would come from an API/JSON
+const allBooks = [
+  {
+    title: "Caraval",
+    author: "Stephanie Garber",
+    icon: "🎭",
+    link: "book.html",
+    tags: ["magical world", "slow burn", "sisters"]
+  },
+  {
+    title: "Once Upon a Broken Heart",
+    author: "Stephanie Garber",
+    icon: "🌹",
+    link: "book.html",
+    tags: ["fated love", "fairy tale", "morally grey"]
+  },
+  {
+    title: "Fourth Wing",
+    author: "Rebecca Yarros",
+    icon: "⚔️",
+    link: "book.html",
+    tags: ["dragons", "enemies to lovers", "academy"]
+  },
+  {
+    title: "A Court of Thorns and Roses",
+    author: "Sarah J. Maas",
+    icon: "👑",
+    link: "book.html",
+    tags: ["faeries", "love triangle", "retelling"]
+  }
+];
+
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+
+if (searchInput) {
+  // Module 3: input event — fires every keystroke
+  searchInput.addEventListener("input", function () {
+    const query = searchInput.value.trim().toLowerCase();
+    handleSearch(query);
+  });
+
+  // Hide dropdown when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".search")) {
+      searchResults.hidden = true;
+    }
+  });
+}
+
+function handleSearch(query) {
+  try {
+    // If empty, hide dropdown
+    if (query.length === 0) {
+      searchResults.hidden = true;
+      searchResults.innerHTML = "";
+      return;
+    }
+
+    // Filter books — Module 4 (for) + Module 2 (string includes)
+    const matches = [];
+    for (let i = 0; i < allBooks.length; i++) {
+      const book = allBooks[i];
+      const titleLower = book.title.toLowerCase();
+      const authorLower = book.author.toLowerCase();
+
+      if (titleLower.includes(query) || authorLower.includes(query)) {
+        matches.push(book);
+      }
+    }
+
+    renderResults(matches);
+    searchResults.hidden = false;
+  } catch (error) {
+    console.error("Search failed:", error);
+  }
+}
+
+function renderResults(books) {
+  searchResults.innerHTML = "";
+
+  if (books.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "search__no-results";
+    empty.textContent = "No realms match that name...";
+    searchResults.appendChild(empty);
+    return;
+  }
+
+  // Module 4: loop through matches
+  for (let i = 0; i < books.length; i++) {
+    const book = books[i];
+    const link = document.createElement("a");
+    link.className = "search__result";
+    link.href = book.link;
+
+    link.innerHTML =
+      '<div class="search__result-cover">' + book.icon + '</div>' +
+      '<div class="search__result-info">' +
+        '<div class="search__result-title">' + book.title + '</div>' +
+        '<div class="search__result-author">by ' + book.author + '</div>' +
+      '</div>';
+
+    searchResults.appendChild(link);
+  }
+}

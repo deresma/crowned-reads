@@ -105,3 +105,106 @@
     font-style: italic;
   }
 }
+
+// ============== SEARCH ==============
+.search {
+  position: relative;
+  width: 240px;
+
+  &__input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba($color-mauve, 0.3);
+    border-radius: 50px;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    background-color: rgba($color-cream, 0.7);
+    color: $color-ink;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &::placeholder {
+      color: rgba($color-mauve, 0.7);
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: $color-gold;
+      box-shadow: 0 0 0 3px rgba($color-gold, 0.15);
+    }
+  }
+
+  &__results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: $radius-md;
+    box-shadow: $shadow-medium;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 200;
+  }
+
+  &__result {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+    color: $color-ink;
+    border-bottom: 1px solid rgba($color-mauve, 0.1);
+    transition: background-color 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: rgba($color-blush, 0.3);
+    }
+  }
+
+  &__result-cover {
+    width: 40px;
+    height: 56px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, $color-rose 0%, $color-plum 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+  }
+
+  &__result-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__result-title {
+    font-family: $font-heading;
+    font-style: italic;
+    font-weight: 600;
+    color: $color-plum;
+    font-size: 1rem;
+    line-height: 1.2;
+    margin-bottom: 0.15rem;
+  }
+
+  &__result-author {
+    font-size: 0.8rem;
+    color: $color-mauve;
+    font-style: italic;
+  }
+
+  &__no-results {
+    padding: 1rem;
+    text-align: center;
+    color: $color-mauve;
+    font-style: italic;
+    font-size: 0.9rem;
+  }
+}
