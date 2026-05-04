@@ -481,3 +481,254 @@
   font-style: italic;
   color: $color-mauve;
 }
+
+// ============== COMMENT FORM (Stage 4.4) ==============
+.comment-form {
+  background-color: rgba($color-blush, 0.25);
+  border: 1px solid rgba($color-mauve, 0.2);
+  border-radius: $radius-md;
+  padding: 1.75rem;
+  margin-bottom: 2.5rem;
+
+  &__row {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: $font-body;
+    font-size: 1rem;
+    color: $color-ink;
+    background-color: white;
+    border: 1px solid rgba($color-mauve, 0.3);
+    border-radius: $radius-sm;
+    outline: none;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: rgba($color-mauve, 0.7);
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: $color-gold;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 90px;
+    font-family: $font-body;
+  }
+
+  &__hint {
+    color: $color-mauve;
+    font-style: italic;
+    font-size: 0.85rem;
+    margin: 0;
+
+    code {
+      background-color: rgba($color-mauve, 0.15);
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      color: $color-plum;
+    }
+  }
+
+  &__button {
+    background: linear-gradient(135deg, $color-rose 0%, $color-plum 100%);
+    color: white;
+    border: none;
+    padding: 0.7rem 2rem;
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 1.05rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: $shadow-soft;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    align-self: flex-end;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-medium;
+    }
+  }
+}
+
+// ============== SPOILER ==============
+.comment--spoiler {
+  position: relative;
+
+  .comment__text {
+    filter: blur(6px);
+    user-select: none;
+    transition: filter 0.4s ease;
+    cursor: pointer;
+  }
+
+  &::before {
+    content: "⚠ Click to reveal spoiler";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: $color-plum;
+    background-color: rgba($color-cream, 0.95);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    border: 1px solid $color-gold;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  &--revealed {
+    .comment__text {
+      filter: blur(0);
+      cursor: default;
+    }
+
+    &::before {
+      opacity: 0;
+    }
+  }
+}
+
+// ============== BOOK SELECTOR (top of detail page) ==============
+.book-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem;
+  background-color: rgba($color-blush, 0.25);
+  border-radius: 50px;
+  justify-content: center;
+
+  &__link {
+    padding: 0.5rem 1.15rem;
+    border-radius: 50px;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: $color-mauve;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: white;
+      color: $color-plum;
+    }
+
+    &--active {
+      background-color: $color-plum;
+      color: white;
+
+      &:hover {
+        background-color: $color-plum;
+        color: white;
+      }
+    }
+  }
+}
+
+// ============== RATING (re-added for comment form) ==============
+.book-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+
+  &--form {
+    margin-top: 0.5rem;
+  }
+}
+
+.rating-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 0.15rem 0.25rem;
+  opacity: 0.3;
+  filter: grayscale(60%);
+  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+  font-family: inherit;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+
+  &--filled {
+    opacity: 1;
+    filter: grayscale(0%);
+  }
+
+  &--preview {
+    opacity: 0.7;
+    filter: grayscale(20%);
+  }
+}
+
+.rating-text {
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: $color-mauve;
+}
+
+.comment-form__label {
+  display: block;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  color: $color-plum;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+// Rating shown inside posted comments
+.comment__rating {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}
+
+.comment__rating {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-size: 1.15rem;
+  letter-spacing: 0.15em;
+  padding: 0.3rem 0.85rem;
+  background-color: rgba($color-blush, 0.45);
+  border-radius: 50px;
+  border: 1px solid rgba($color-gold, 0.4);
+
+  &-score {
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: $color-mauve;
+    letter-spacing: normal;
+    margin-left: 0.35rem;
+  }
+}

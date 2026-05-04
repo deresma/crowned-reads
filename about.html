@@ -97,6 +97,46 @@
 </div>
   </section>
 
+  <!-- CONTACT SECTION -->
+<section class="contact">
+  <div class="container">
+    <div class="contact__inner">
+      <h2 class="contact__title">Send a Whisper</h2>
+      <p class="contact__lead">
+        Have a book recommendation? A thought to share? Drop a note —
+        I read every message.
+      </p>
+      <div class="divider">✦ ◆ ✦</div>
+
+      <form class="contact-form" id="contact-form">
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="contact-name">Your name</label>
+          <input type="text" class="contact-form__input" id="contact-name" placeholder="What should I call you?" required />
+        </div>
+
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="contact-email">Your email</label>
+          <input type="email" class="contact-form__input" id="contact-email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="contact-form__row">
+          <label class="contact-form__label" for="contact-message">Your message</label>
+          <textarea class="contact-form__textarea" id="contact-message" rows="5" placeholder="Tell me what's on your mind..." required></textarea>
+        </div>
+
+        <div class="contact-form__row contact-form__row--submit">
+          <button type="submit" class="contact-form__button">Send Message</button>
+        </div>
+
+        <!-- Success message — hidden by default, shown by JS -->
+        <div class="contact-form__success" id="contact-success" hidden>
+          ✦ Thank you, <span id="contact-success-name">friend</span>! Your message has reached me. I'll write back soon.
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
   <footer class="site-footer">
     <div class="container">
       <div class="divider">✦ ◆ ✦</div>

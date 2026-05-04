@@ -1,0 +1,128 @@
+@use 'variables' as *;
+
+.contact {
+  padding: 4rem 0 5rem;
+  background-color: rgba($color-lavender, 0.15);
+  border-top: 1px solid rgba($color-mauve, 0.15);
+  border-bottom: 1px solid rgba($color-mauve, 0.15);
+  margin-top: 4rem;
+
+  &__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  &__lead {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: $color-mauve;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+}
+
+.contact-form {
+  text-align: left;
+  background-color: white;
+  border-radius: $radius-md;
+  padding: 2rem;
+  box-shadow: $shadow-soft;
+  border: 1px solid rgba($color-gold, 0.3);
+
+  &__row {
+    margin-bottom: 1.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &--submit {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-plum;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  &__input,
+  &__textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-family: $font-body;
+    font-size: 1rem;
+    color: $color-ink;
+    background-color: rgba($color-cream, 0.5);
+    border: 1px solid rgba($color-mauve, 0.25);
+    border-radius: $radius-sm;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &::placeholder {
+      color: rgba($color-mauve, 0.6);
+      font-style: italic;
+    }
+
+    &:focus {
+      border-color: $color-gold;
+      box-shadow: 0 0 0 3px rgba($color-gold, 0.15);
+      background-color: white;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  &__button {
+    background: linear-gradient(135deg, $color-rose 0%, $color-plum 100%);
+    color: white;
+    border: none;
+    padding: 0.85rem 2.5rem;
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 1.15rem;
+    letter-spacing: 0.1em;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: $shadow-soft;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-medium;
+    }
+  }
+
+  &__success {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background-color: rgba($color-blush, 0.4);
+    border-left: 3px solid $color-gold;
+    border-radius: $radius-sm;
+    text-align: center;
+    font-family: $font-heading;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: $color-plum;
+    animation: fadeIn 0.5s ease;
+
+    span {
+      color: $color-mauve;
+    }
+  }
+}

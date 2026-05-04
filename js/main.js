@@ -2,150 +2,46 @@
 // CROWNED READS — Main JavaScript
 // Author: Esmanur Dere
 // Course: YBS226 Advanced Web Design
+//
+// Module 2 (variables, arrays, objects, strings),
+// Module 3 (events, user input),
+// Module 4 (loops, conditional execution),
+// Module 5 (functions),
+// Module 6 (try/catch error handling)
 // ============================================
 
 console.log("✦ Crowned Reads loaded ✦");
 
 
 // ============================================
-// FEATURE 1: Thematic Book Rating
-// Module 2 (variables, arrays), Module 4 (loops, if),
-// Module 5 (functions), Module 6 (try/catch)
+// FEATURE 1: Live Search
 // ============================================
 
-// Object to store user ratings (key: book name, value: 1-5)
-const userRatings = {};
-
-// Find all rating containers on the page
-const ratingContainers = document.querySelectorAll(".book-rating");
-
-// Loop through each rating block and set up its behavior
-ratingContainers.forEach(function (container) {
-  setupRating(container);
-});
-
-
-/**
- * Attaches click + hover behavior to one rating block.
- * @param {HTMLElement} container — the .book-rating element
- */
-function setupRating(container) {
-  try {
-    const icons = container.querySelectorAll(".rating-icon");
-    const text = container.querySelector(".rating-text");
-    const bookName = container.dataset.book;
-
-    // Loop through each icon and add listeners
-    icons.forEach(function (icon) {
-      // CLICK — set permanent rating
-      icon.addEventListener("click", function () {
-        const value = parseInt(icon.dataset.value);
-        setRating(container, value);
-        userRatings[bookName] = value;
-        console.log("Rated", bookName, "→", value, "of 5");
-      });
-
-      // MOUSE ENTER — show preview
-      icon.addEventListener("mouseenter", function () {
-        const value = parseInt(icon.dataset.value);
-        previewRating(container, value);
-      });
-    });
-
-    // MOUSE LEAVE — restore actual rating
-    container.addEventListener("mouseleave", function () {
-      const currentRating = userRatings[bookName] || 0;
-      setRating(container, currentRating);
-    });
-  } catch (error) {
-    console.error("Could not set up rating block:", error);
-  }
-}
-
-
-/**
- * Visually fills icons up to the given value.
- * @param {HTMLElement} container
- * @param {number} value — how many icons should be filled (0-5)
- */
-function setRating(container, value) {
-  const icons = container.querySelectorAll(".rating-icon");
-  const text = container.querySelector(".rating-text");
-
-  // Use a classic for loop — Module 4
-  for (let i = 0; i < icons.length; i++) {
-    icons[i].classList.remove("rating-icon--preview");
-
-    if (i < value) {
-      icons[i].classList.add("rating-icon--filled");
-    } else {
-      icons[i].classList.remove("rating-icon--filled");
-    }
-  }
-
-  // Update the text label
-  if (value > 0) {
-    text.textContent = "Your rating: " + value + " of 5";
-  } else {
-    text.textContent = "Click to rate";
-  }
-}
-
-
-/**
- * Hover preview — same as setRating but uses preview class.
- * @param {HTMLElement} container
- * @param {number} value
- */
-function previewRating(container, value) {
-  const icons = container.querySelectorAll(".rating-icon");
-
-  for (let i = 0; i < icons.length; i++) {
-    icons[i].classList.remove("rating-icon--filled");
-
-    if (i < value) {
-      icons[i].classList.add("rating-icon--preview");
-    } else {
-      icons[i].classList.remove("rating-icon--preview");
-    }
-  }
-}
-
-// ============================================
-// FEATURE 3: Live Search
-// Module 2 (arrays/objects/strings), Module 3 (input event),
-// Module 4 (loops, if), Module 5 (functions)
-// ============================================
-
-// Book data — in a real app this would come from an API/JSON
+// Book data with proper IDs for routing
 const allBooks = [
   {
+    id: "caraval",
     title: "Caraval",
     author: "Stephanie Garber",
-    icon: "🎭",
-    link: "book.html",
-    tags: ["magical world", "slow burn", "sisters"]
+    icon: "🎭"
   },
   {
+    id: "once-upon",
     title: "Once Upon a Broken Heart",
     author: "Stephanie Garber",
-    icon: "🌹",
-    link: "book.html",
-    tags: ["fated love", "fairy tale", "morally grey"]
+    icon: "🌹"
   },
   {
+    id: "fourth-wing",
     title: "Fourth Wing",
     author: "Rebecca Yarros",
-    icon: "⚔️",
-    link: "book.html",
-    tags: ["dragons", "enemies to lovers", "academy"]
+    icon: "⚔️"
   },
   {
+    id: "acotar",
     title: "A Court of Thorns and Roses",
     author: "Sarah J. Maas",
-    icon: "👑",
-    link: "book.html",
-    tags: ["faeries", "love triangle", "retelling"]
+    icon: "👑"
   }
 ];
 
@@ -169,14 +65,13 @@ if (searchInput) {
 
 function handleSearch(query) {
   try {
-    // If empty, hide dropdown
     if (query.length === 0) {
       searchResults.hidden = true;
       searchResults.innerHTML = "";
       return;
     }
 
-    // Filter books — Module 4 (for) + Module 2 (string includes)
+    // Module 4: filter books with for loop
     const matches = [];
     for (let i = 0; i < allBooks.length; i++) {
       const book = allBooks[i];
@@ -206,12 +101,12 @@ function renderResults(books) {
     return;
   }
 
-  // Module 4: loop through matches
   for (let i = 0; i < books.length; i++) {
     const book = books[i];
     const link = document.createElement("a");
     link.className = "search__result";
-    link.href = book.link;
+    // FIX: route to correct book using URL parameter
+    link.href = "book.html?id=" + book.id;
 
     link.innerHTML =
       '<div class="search__result-cover">' + book.icon + '</div>' +
@@ -222,4 +117,262 @@ function renderResults(books) {
 
     searchResults.appendChild(link);
   }
+}
+
+
+// ============================================
+// FEATURE 2: Spoiler Hider
+// ============================================
+
+// Apply blur to existing comments containing "spoiler"
+const allComments = document.querySelectorAll(".comment");
+allComments.forEach(function (comment) {
+  applySpoiler(comment);
+});
+
+
+function applySpoiler(comment) {
+  const textEl = comment.querySelector(".comment__text");
+  if (!textEl) return;
+
+  const text = textEl.textContent.toLowerCase();
+
+  if (text.includes("spoiler")) {
+    comment.classList.add("comment--spoiler");
+
+    comment.addEventListener("click", function () {
+      comment.classList.add("comment--spoiler--revealed");
+    });
+  }
+}
+
+
+// ============================================
+// FEATURE 3: Comment Form with Themed Rating
+// ============================================
+
+let selectedRating = 0;
+
+const formRating = document.getElementById("form-rating");
+
+if (formRating) {
+  // Click to set rating (event delegation — buttons added by JS)
+  formRating.addEventListener("click", function (event) {
+    const btn = event.target.closest(".rating-icon");
+    if (!btn) return;
+
+    const value = parseInt(btn.dataset.value);
+    selectedRating = value;
+    fillRatingBlock(formRating, value);
+  });
+
+  // Hover preview
+  formRating.addEventListener("mouseover", function (event) {
+    const btn = event.target.closest(".rating-icon");
+    if (!btn) return;
+
+    const value = parseInt(btn.dataset.value);
+    previewRatingBlock(formRating, value);
+  });
+
+  // Restore actual rating when mouse leaves
+  formRating.addEventListener("mouseleave", function () {
+    fillRatingBlock(formRating, selectedRating);
+  });
+}
+
+
+function fillRatingBlock(container, value) {
+  const icons = container.querySelectorAll(".rating-icon");
+  const text = container.querySelector(".rating-text");
+
+  for (let i = 0; i < icons.length; i++) {
+    icons[i].classList.remove("rating-icon--preview");
+    if (i < value) {
+      icons[i].classList.add("rating-icon--filled");
+    } else {
+      icons[i].classList.remove("rating-icon--filled");
+    }
+  }
+
+  if (text) {
+    if (value > 0) {
+      text.textContent = "Your rating: " + value + " of 5";
+    } else {
+      text.textContent = "Click to rate";
+    }
+  }
+}
+
+
+function previewRatingBlock(container, value) {
+  const icons = container.querySelectorAll(".rating-icon");
+
+  for (let i = 0; i < icons.length; i++) {
+    icons[i].classList.remove("rating-icon--filled");
+    if (i < value) {
+      icons[i].classList.add("rating-icon--preview");
+    } else {
+      icons[i].classList.remove("rating-icon--preview");
+    }
+  }
+}
+
+
+// --- Comment form submission ---
+const commentForm = document.getElementById("comment-form");
+const commentsList = document.getElementById("comments-list");
+
+if (commentForm) {
+  commentForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    handleNewComment();
+  });
+}
+
+
+function handleNewComment() {
+  try {
+    const nameInput = document.getElementById("comment-name");
+    const textInput = document.getElementById("comment-text");
+
+    const name = nameInput.value.trim();
+    const text = textInput.value.trim();
+
+    // Module 4: validation chain
+    if (name.length === 0 || text.length === 0) {
+      alert("Please fill in both your name and review.");
+      return;
+    }
+
+    if (text.length < 10) {
+      alert("Your review must be at least 10 characters long.");
+      return;
+    }
+
+    if (selectedRating === 0) {
+      alert("Please rate the book before posting.");
+      return;
+    }
+
+    // Read the icon from the form rating block
+    const icon = formRating ? formRating.dataset.icon : "✦";
+
+    const newComment = createCommentElement(name, text, selectedRating, icon);
+    applySpoiler(newComment);
+
+    commentsList.insertBefore(newComment, commentsList.firstChild);
+
+    // Reset form
+    nameInput.value = "";
+    textInput.value = "";
+    selectedRating = 0;
+    fillRatingBlock(formRating, 0);
+
+    console.log("Posted comment by", name, "rating:", selectedRating);
+  } catch (error) {
+    console.error("Could not post comment:", error);
+    alert("Something went wrong. Please try again.");
+  }
+}
+
+
+function createCommentElement(name, text, rating, icon) {
+  const today = new Date();
+  const months = ["January","February","March","April","May","June",
+                  "July","August","September","October","November","December"];
+  const dateStr = months[today.getMonth()] + " " + today.getDate() + ", " + today.getFullYear();
+
+  // Build rating string with filled + empty icons — Module 4
+  let ratingStr = "";
+  for (let i = 0; i < rating; i++) {
+    ratingStr = ratingStr + icon;
+  }
+
+  const article = document.createElement("article");
+  article.className = "comment";
+  article.innerHTML =
+    '<div class="comment__header">' +
+      '<span class="comment__author">' + name + ' ✦</span>' +
+      '<span class="comment__date">' + dateStr + '</span>' +
+    '</div>' +
+    '<div class="comment__rating">' + ratingStr + ' <span class="comment__rating-score">(' + rating + '/5)</span></div>' +
+    '<p class="comment__text">' + text + '</p>';
+
+  return article;
+}
+
+
+// ============================================
+// FEATURE 4: Contact Form (About page)
+// ============================================
+
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    handleContactSubmit();
+  });
+}
+
+
+function handleContactSubmit() {
+  try {
+    const nameInput = document.getElementById("contact-name");
+    const emailInput = document.getElementById("contact-email");
+    const messageInput = document.getElementById("contact-message");
+    const successBox = document.getElementById("contact-success");
+    const successName = document.getElementById("contact-success-name");
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = messageInput.value.trim();
+
+    if (name.length === 0) {
+      alert("Please tell me your name.");
+      return;
+    }
+
+    if (!isValidEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (message.length < 10) {
+      alert("Your message is too short — at least 10 characters please.");
+      return;
+    }
+
+    successName.textContent = name;
+    successBox.hidden = false;
+
+    nameInput.value = "";
+    emailInput.value = "";
+    messageInput.value = "";
+
+    console.log("Contact form sent by", name, "(" + email + ")");
+
+    setTimeout(function () {
+      successBox.hidden = true;
+    }, 6000);
+  } catch (error) {
+    console.error("Contact form error:", error);
+    alert("Something went wrong. Please try again.");
+  }
+}
+
+
+// Manual email validator — Module 2 + Module 4
+function isValidEmail(email) {
+  if (email.length < 5) return false;
+  if (email.indexOf("@") === -1) return false;
+  if (email.indexOf(".") === -1) return false;
+
+  const parts = email.split("@");
+  if (parts.length !== 2) return false;
+  if (parts[0].length === 0) return false;
+  if (parts[1].indexOf(".") === -1) return false;
+
+  return true;
 }
