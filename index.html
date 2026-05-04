@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Crowned Reads — A Romantasy Book Blog</title>
 
-  <!-- Google Fonts: Cormorant Garamond (italic headings) + Lora (body) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -13,29 +13,24 @@
     rel="stylesheet"
   />
 
-  <!-- Our compiled stylesheet -->
   <link rel="stylesheet" href="css/main.css" />
 </head>
 
- <body>
+<body>
+
   <!-- ============== HEADER ============== -->
   <header class="site-header">
     <div class="container site-header__inner">
-
-    <!-- Logo -->
-    <a href="index.html" class="logo">
-      <span class="logo__text">Crowned Reads</span>
-    </a>
-
-    <!-- Navigation -->
-    <nav class="main-nav">
-      <ul class="main-nav__list">
-        <li><a href="index.html" class="main-nav__link">Home</a></li>
-        <li><a href="book.html" class="main-nav__link">Books</a></li>
-        <li><a href="about.html" class="main-nav__link">About</a></li>
-      </ul>
-    </nav>
-
+      <a href="index.html" class="logo">
+        <span class="logo__text">Crowned Reads</span>
+      </a>
+      <nav class="main-nav">
+        <ul class="main-nav__list">
+          <li><a href="index.html" class="main-nav__link main-nav__link--active">Home</a></li>
+          <li><a href="book.html" class="main-nav__link">Books</a></li>
+          <li><a href="about.html" class="main-nav__link">About</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
@@ -51,7 +46,117 @@
     </div>
   </section>
 
-  <!-- JavaScript -->
+  <!-- ============== BOOK GRID ============== -->
+  <section class="books">
+    <div class="container">
+      <h2 class="section-title">Featured Reads</h2>
+      <p class="section-subtitle">
+        Hand-picked romantasy novels that crowned the bestseller lists.
+      </p>
+
+      <div class="book-grid">
+
+        <!-- Book 1: Caraval -->
+        <article class="book-card">
+          <div class="book-card__cover book-card__cover--caraval">
+            <img src="images/caraval.jpg" alt="Caraval book cover" onerror="this.style.display='none'" />
+          </div>
+          <div class="book-card__body">
+            <h3 class="book-card__title">Caraval</h3>
+            <p class="book-card__author">by Stephanie Garber</p>
+            <p class="book-card__excerpt">
+              Welcome to Caraval, where nothing is quite what it seems...
+              A magical game, a missing sister, and a player who steals more than hearts.
+            </p>
+            <div class="book-card__tags">
+              <span class="tag">magical world</span>
+              <span class="tag">slow burn</span>
+              <span class="tag">sisters</span>
+            </div>
+            <a href="book.html" class="book-card__link">Read More →</a>
+          </div>
+        </article>
+
+        <!-- Book 2: Once Upon a Broken Heart -->
+        <article class="book-card">
+          <div class="book-card__cover book-card__cover--once-upon">
+            <img src="images/once-upon.jpg" alt="Once Upon a Broken Heart book cover" onerror="this.style.display='none'" />
+          </div>
+          <div class="book-card__body">
+            <h3 class="book-card__title">Once Upon a Broken Heart</h3>
+            <p class="book-card__author">by Stephanie Garber</p>
+            <p class="book-card__excerpt">
+              Evangeline Fox makes a bargain with the Prince of Hearts —
+              and discovers that wishes always come with a price.
+            </p>
+            <div class="book-card__tags">
+              <span class="tag">fated love</span>
+              <span class="tag">fairy tale</span>
+              <span class="tag">morally grey</span>
+            </div>
+            <a href="book.html" class="book-card__link">Read More →</a>
+          </div>
+        </article>
+
+        <!-- Book 3: Fourth Wing -->
+        <article class="book-card">
+          <div class="book-card__cover book-card__cover--fourth-wing">
+            <img src="images/fourth-wing.jpg" alt="Fourth Wing book cover" onerror="this.style.display='none'" />
+          </div>
+          <div class="book-card__body">
+            <h3 class="book-card__title">Fourth Wing</h3>
+            <p class="book-card__author">by Rebecca Yarros</p>
+            <p class="book-card__excerpt">
+              Violet Sorrengail was supposed to live a quiet life among books.
+              Instead, she's thrown into a brutal war college for dragon riders.
+            </p>
+            <div class="book-card__tags">
+              <span class="tag">dragons</span>
+              <span class="tag">enemies to lovers</span>
+              <span class="tag">academy</span>
+            </div>
+            <a href="book.html" class="book-card__link">Read More →</a>
+          </div>
+        </article>
+
+        <!-- Book 4: ACOTAR -->
+        <article class="book-card">
+          <div class="book-card__cover book-card__cover--acotar">
+            <img src="images/acotar.jpg" alt="A Court of Thorns and Roses book cover" onerror="this.style.display='none'" />
+          </div>
+          <div class="book-card__body">
+            <h3 class="book-card__title">A Court of Thorns and Roses</h3>
+            <p class="book-card__author">by Sarah J. Maas</p>
+            <p class="book-card__excerpt">
+              When Feyre kills a wolf in the woods, a beast-like creature drags her
+              into a faerie realm she only knew from legends.
+            </p>
+            <div class="book-card__tags">
+              <span class="tag">faeries</span>
+              <span class="tag">love triangle</span>
+              <span class="tag">retelling</span>
+            </div>
+            <a href="book.html" class="book-card__link">Read More →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="divider">✦ ◆ ✦</div>
+      <p class="site-footer__text">
+        Crowned Reads · A Romantasy Book Blog
+      </p>
+      <p class="site-footer__credit">
+        Made with 🌙 by Esmanur Dere ·
+      </p>
+    </div>
+  </footer>
+
   <script src="js/main.js"></script>
 </body>
 </html>

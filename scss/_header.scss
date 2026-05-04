@@ -75,6 +75,15 @@
         width: 100%;
       }
     }
+
+    &--active {
+  color: $color-plum;
+
+       &::after {
+    width: 100%;
+      }
+    }
+
   }
 }
 

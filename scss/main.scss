@@ -5,6 +5,6 @@
 @use 'variables' as *;
 @use 'base';
 @use 'header';
-// @use 'book-card';     // İleride aktif edeceğiz
-// @use 'footer';        // İleride aktif edeceğiz
+@use 'book-card';  
+@use 'footer';     
 // @use 'responsive';    // İleride aktif edeceğiz

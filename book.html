@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caraval — Crowned Reads</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__text">Crowned Reads</span>
+      </a>
+      <nav class="main-nav">
+        <ul class="main-nav__list">
+          <li><a href="index.html" class="main-nav__link">Home</a></li>
+          <li><a href="book.html" class="main-nav__link main-nav__link--active">Books</a></li>
+          <li><a href="about.html" class="main-nav__link">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BOOK DETAIL -->
+  <section class="book-detail">
+    <div class="container">
+
+      <a href="index.html" class="back-link">← Back to all books</a>
+
+      <div class="book-detail__layout">
+
+        <!-- Left: Cover -->
+        <div class="book-detail__cover book-card__cover--caraval">
+          <img src="images/caraval.jpg" alt="Caraval book cover" onerror="this.style.display='none'" />
+        </div>
+
+        <!-- Right: Info -->
+        <div class="book-detail__info">
+          <h1 class="book-detail__title">Caraval</h1>
+          <p class="book-detail__author">by Stephanie Garber</p>
+
+          <div class="book-detail__tags">
+            <span class="tag">magical world</span>
+            <span class="tag">slow burn</span>
+            <span class="tag">sisters</span>
+            <span class="tag">mystery</span>
+          </div>
+
+          <p class="book-detail__description">
+            Scarlett Dragna has never left the tiny island where she and her sister, Tella,
+            live with their powerful, and cruel, father. Now Scarlett's father has arranged
+            a marriage for her, and Scarlett thinks her dreams of seeing Caraval — the
+            faraway, once-a-year performance where the audience participates in the show —
+            are over.
+          </p>
+
+          <p class="book-detail__description">
+            But this year, Scarlett's long-dreamt-of invitation finally arrives.
+            With the help of a mysterious sailor, Tella whisks Scarlett away to the show.
+            Only, the actual Caraval turns out to be far more sinister and magical than
+            she had ever imagined.
+          </p>
+
+          <div class="book-detail__meta">
+            <p><strong>Series:</strong> Caraval (Book 1)</p>
+            <p><strong>Published:</strong> 2017</p>
+            <p><strong>Pages:</strong> 407</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">✦ ◆ ✦</div>
+
+      <!-- COMMENTS SECTION (placeholder for Stage 4) -->
+      <section class="comments">
+        <h2 class="section-title">Reader Reviews</h2>
+        <p class="section-subtitle">Share your thoughts with fellow readers.</p>
+
+        <!-- Comment form placeholder — JS coming in Stage 4 -->
+        <div class="comment-form">
+          <p class="comment-form__placeholder">
+            💬 The comment form will be added in the next stage with JavaScript.
+          </p>
+        </div>
+
+        <!-- Sample comments (static for now) -->
+        <article class="comment">
+          <div class="comment__header">
+            <span class="comment__author">Luna ✦</span>
+            <span class="comment__date">March 12, 2026</span>
+          </div>
+          <p class="comment__text">
+            The atmosphere in this book is unmatched. Reading Caraval feels like
+            stepping into a fever dream — magical, dangerous, and absolutely beautiful.
+          </p>
+        </article>
+
+        <article class="comment">
+          <div class="comment__header">
+            <span class="comment__author">Aria ✦</span>
+            <span class="comment__date">February 28, 2026</span>
+          </div>
+          <p class="comment__text">
+            Stephanie Garber's writing is so visual. I could see every velvet curtain,
+            every starry alleyway. The sister bond at the heart of the story made me cry.
+          </p>
+        </article>
+
+      </section>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="divider">✦ ◆ ✦</div>
+      <p class="site-footer__text">Crowned Reads · A Romantasy Book Blog</p>
+      <p class="site-footer__credit">Made with 🌙 by Esmanur Dere · YBS226 Final Project</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
