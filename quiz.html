@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Which Romantasy World Belongs to You? — Crowned Reads</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Lora:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__text">Crowned Reads</span>
+      </a>
+      <nav class="main-nav">
+        <ul class="main-nav__list">
+          <li><a href="index.html" class="main-nav__link">Home</a></li>
+          <li><a href="book.html" class="main-nav__link">Books</a></li>
+          <li><a href="quiz.html" class="main-nav__link main-nav__link--active">Quiz</a></li>
+          <li><a href="about.html" class="main-nav__link">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="quiz">
+    <div class="container">
+
+      <!-- INTRO SCREEN -->
+      <div class="quiz__screen quiz__screen--intro" id="quiz-intro">
+        <h1 class="quiz__title">Which Romantasy World Belongs to You?</h1>
+        <div class="divider">✦ ◆ ✦</div>
+        <p class="quiz__lead">
+          Five whispered questions. One realm waiting to claim you.
+          Answer truthfully and we'll crown you with the book your soul has been searching for.
+        </p>
+        <button class="quiz__button" id="quiz-start">Begin the Journey</button>
+      </div>
+
+      <!-- QUESTION SCREEN -->
+      <div class="quiz__screen quiz__screen--question" id="quiz-question" hidden>
+        <p class="quiz__progress" id="quiz-progress">Question 1 of 5</p>
+        <h2 class="quiz__question-text" id="quiz-question-text">Question goes here</h2>
+        <div class="quiz__options" id="quiz-options">
+          <!-- Buttons will be injected by JS -->
+        </div>
+      </div>
+
+      <!-- RESULT SCREEN -->
+      <div class="quiz__screen quiz__screen--result" id="quiz-result" hidden>
+        <p class="quiz__progress">Your Realm Awaits</p>
+        <h2 class="quiz__result-title" id="quiz-result-title">Result</h2>
+        <p class="quiz__result-subtitle" id="quiz-result-subtitle">Subtitle</p>
+        <div class="divider">✦ ◆ ✦</div>
+        <p class="quiz__result-text" id="quiz-result-text">Description</p>
+        <p class="quiz__result-rec">
+          📖 Your recommended read: <strong id="quiz-result-book">Book name</strong>
+        </p>
+        <button class="quiz__button" id="quiz-restart">Take it again</button>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="divider">✦ ◆ ✦</div>
+      <p class="site-footer__text">Crowned Reads · A Romantasy Book Blog</p>
+      <p class="site-footer__credit">Made with 🌙 by Esmanur Dere · YBS226 Final Project</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
