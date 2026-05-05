@@ -376,3 +376,37 @@ function isValidEmail(email) {
 
   return true;
 }
+
+// ============================================
+// FEATURE 5: Mobile Hamburger Menu
+// Module 3 (events), Module 5 (functions)
+// ============================================
+
+const navToggle = document.getElementById("nav-toggle");
+const mainNav = document.getElementById("main-nav");
+
+if (navToggle && mainNav) {
+  navToggle.addEventListener("click", function () {
+    toggleMobileMenu();
+  });
+
+  // Close menu when clicking a link
+  const navLinks = mainNav.querySelectorAll(".main-nav__link");
+  navLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      closeMobileMenu();
+    });
+  });
+}
+
+
+function toggleMobileMenu() {
+  navToggle.classList.toggle("nav-toggle--open");
+  mainNav.classList.toggle("main-nav--open");
+}
+
+
+function closeMobileMenu() {
+  navToggle.classList.remove("nav-toggle--open");
+  mainNav.classList.remove("main-nav--open");
+}

@@ -1,0 +1,279 @@
+@use 'variables' as *;
+
+// ============== HAMBURGER BUTTON ==============
+.nav-toggle {
+  display: none; // hidden on desktop
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32px;
+  height: 26px;
+  z-index: 110;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: $color-plum;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  // X shape when menu is open
+  &--open {
+    span:nth-child(1) {
+      transform: translateY(10px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-10px) rotate(-45deg);
+    }
+  }
+}
+
+// ============== TABLET (max-width: 900px) ==============
+@media (max-width: 900px) {
+  .hero {
+    &__title {
+      font-size: 2.5rem;
+    }
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  // Book detail layout — stacked
+  .book-detail__layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .book-detail__cover {
+    height: 400px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  // About author — stacked
+  .about__author {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    gap: 1.5rem;
+  }
+
+  .book-selector {
+    padding: 0.6rem;
+
+    &__link {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.9rem;
+    }
+  }
+}
+
+// ============== MOBILE (max-width: 700px) ==============
+@media (max-width: 700px) {
+  .site-header {
+    padding: 1rem 0;
+
+    &__inner {
+      flex-wrap: nowrap;
+      gap: 1rem;
+      position: relative;
+    }
+  }
+
+  .logo__text {
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+  }
+
+  // Show hamburger
+  .nav-toggle {
+    display: flex;
+    order: 2;
+  }
+
+  // Search shrinks
+  .search {
+    width: 130px;
+    order: 3;
+
+    &__input {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+
+  // Mobile nav menu — hidden until toggled
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: $color-cream;
+    border-bottom: 1px solid rgba($color-mauve, 0.2);
+    box-shadow: $shadow-medium;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    order: 4;
+    width: 100%;
+
+    &--open {
+      max-height: 500px;
+    }
+
+    &__list {
+      flex-direction: column;
+      padding: 1rem 1.5rem;
+      gap: 0;
+    }
+
+    &__link {
+      display: block;
+      padding: 0.85rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid rgba($color-mauve, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  // Hero
+  .hero {
+    padding: 3rem 0 2rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+  }
+
+  // Books grid — single column
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  // Book detail
+  .book-detail__title {
+    font-size: 2.25rem;
+  }
+
+  .book-selector {
+    flex-direction: column;
+    border-radius: $radius-md;
+
+    &__link {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  // Quiz
+  .quiz {
+    padding: 2rem 0 4rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+    &__question-text {
+      font-size: 1.5rem;
+    }
+    &__option {
+      padding: 1rem;
+      font-size: 0.95rem;
+    }
+    &__result-title {
+      font-size: 2.25rem;
+    }
+  }
+
+  // About
+  .about__title {
+    font-size: 2.25rem;
+  }
+
+  // Comment form actions stack
+  .comment-form__row--actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .comment-form__button {
+    width: 100%;
+  }
+
+  // Contact form padding
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+// ============== SMALL MOBILE (max-width: 420px) ==============
+@media (max-width: 420px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .site-header__inner {
+    gap: 0.5rem;
+  }
+
+  .logo__text {
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+
+  .search {
+    width: 100px;
+
+    &__input {
+      font-size: 0.8rem;
+      padding: 0.35rem 0.7rem;
+    }
+  }
+
+  .hero__title {
+    font-size: 1.75rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  // Comment headers stack
+  .comment__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  // Quiz
+  .quiz__question-text {
+    font-size: 1.25rem;
+  }
+
+  // Portrait smaller on tiny screens
+  .about__portrait {
+    width: 180px;
+    height: 180px;
+  }
+
+  // Book detail cover smaller
+  .book-detail__cover {
+    height: 320px;
+  }
+}

@@ -1367,4 +1367,252 @@ a:hover {
 }
 .contact-form__success span {
   color: #8E6E8A;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 32px;
+  height: 26px;
+  z-index: 110;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #4A2E4D;
+  border-radius: 2px;
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+}
+.nav-toggle--open span:nth-child(1) {
+  -webkit-transform: translateY(10px) rotate(45deg);
+          transform: translateY(10px) rotate(45deg);
+}
+.nav-toggle--open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle--open span:nth-child(3) {
+  -webkit-transform: translateY(-10px) rotate(-45deg);
+          transform: translateY(-10px) rotate(-45deg);
+}
+
+@media (max-width: 900px) {
+  .hero__title {
+    font-size: 2.5rem;
+  }
+  .hero__subtitle {
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .book-detail__layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .book-detail__cover {
+    height: 400px;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .about__author {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    gap: 1.5rem;
+  }
+  .book-selector {
+    padding: 0.6rem;
+  }
+  .book-selector__link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.9rem;
+  }
+}
+@media (max-width: 700px) {
+  .site-header {
+    padding: 1rem 0;
+  }
+  .site-header__inner {
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    gap: 1rem;
+    position: relative;
+  }
+  .logo__text {
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+  }
+  .nav-toggle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+            order: 2;
+  }
+  .search {
+    width: 130px;
+    -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+            order: 3;
+  }
+  .search__input {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  .main-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #FAF3E7;
+    border-bottom: 1px solid rgba(142, 110, 138, 0.2);
+    -webkit-box-shadow: 0 6px 24px rgba(74, 46, 77, 0.15);
+            box-shadow: 0 6px 24px rgba(74, 46, 77, 0.15);
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.4s ease;
+    transition: max-height 0.4s ease;
+    -webkit-box-ordinal-group: 5;
+        -ms-flex-order: 4;
+            order: 4;
+    width: 100%;
+  }
+  .main-nav--open {
+    max-height: 500px;
+  }
+  .main-nav__list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 1rem 1.5rem;
+    gap: 0;
+  }
+  .main-nav__link {
+    display: block;
+    padding: 0.85rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(142, 110, 138, 0.1);
+  }
+  .main-nav__link:last-child {
+    border-bottom: none;
+  }
+  .hero {
+    padding: 3rem 0 2rem;
+  }
+  .hero__title {
+    font-size: 2rem;
+  }
+  .book-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .book-detail__title {
+    font-size: 2.25rem;
+  }
+  .book-selector {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    border-radius: 12px;
+  }
+  .book-selector__link {
+    width: 100%;
+    text-align: center;
+  }
+  .quiz {
+    padding: 2rem 0 4rem;
+  }
+  .quiz__title {
+    font-size: 2rem;
+  }
+  .quiz__question-text {
+    font-size: 1.5rem;
+  }
+  .quiz__option {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+  .quiz__result-title {
+    font-size: 2.25rem;
+  }
+  .about__title {
+    font-size: 2.25rem;
+  }
+  .comment-form__row--actions {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+  }
+  .comment-form__button {
+    width: 100%;
+  }
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+@media (max-width: 420px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .site-header__inner {
+    gap: 0.5rem;
+  }
+  .logo__text {
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+  }
+  .search {
+    width: 100px;
+  }
+  .search__input {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.7rem;
+  }
+  .hero__title {
+    font-size: 1.75rem;
+  }
+  .section-title {
+    font-size: 1.75rem;
+  }
+  .comment__header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .quiz__question-text {
+    font-size: 1.25rem;
+  }
+  .about__portrait {
+    width: 180px;
+    height: 180px;
+  }
+  .book-detail__cover {
+    height: 320px;
+  }
 }/*# sourceMappingURL=main.css.map */
