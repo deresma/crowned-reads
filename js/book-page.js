@@ -5,7 +5,6 @@
 // Module 5 (functions), Module 6 (try/catch)
 // ============================================
 
-// --- DATA: Full info for every book ---
 const booksData = {
   "caraval": {
     title: "Caraval",
@@ -83,15 +82,13 @@ const booksData = {
 
 
 // ============================================
-// READ URL PARAMETER (Module 3 — user input via URL)
+// READ URL PARAMETER (Module 3)
 // ============================================
 
 function getBookIdFromURL() {
-  // URLSearchParams reads ?id=caraval from the URL
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
-  // If no id or invalid, default to caraval
   if (!id || !booksData[id]) {
     return "caraval";
   }
@@ -100,7 +97,7 @@ function getBookIdFromURL() {
 
 
 // ============================================
-// RENDER THE BOOK PAGE (Module 5 — function)
+// RENDER THE BOOK PAGE (Module 5)
 // ============================================
 
 function renderBook(bookId) {
@@ -111,15 +108,21 @@ function renderBook(bookId) {
       return;
     }
 
-    // --- Update page title ---
     document.getElementById("page-title").textContent = book.title + " — Crowned Reads";
 
     // --- Cover ---
     const coverEl = document.getElementById("book-cover");
     coverEl.className = "book-detail__cover " + book.coverClass;
+
     const coverImg = document.getElementById("book-cover-img");
+    coverImg.style.display = "";              // reset any previous hide
     coverImg.src = book.cover;
     coverImg.alt = book.title + " book cover";
+
+    // Hide image gracefully ONLY if it actually fails to load
+    coverImg.onerror = function () {
+      coverImg.style.display = "none";
+    };
 
     // --- Title and author ---
     document.getElementById("book-title").textContent = book.title;
@@ -188,7 +191,6 @@ function renderSampleComments(comments) {
 }
 
 
-// Build a 5-icon themed rating inside the comment form
 function renderFormRating(icon) {
   const ratingEl = document.getElementById("form-rating");
   if (!ratingEl) return;
@@ -198,7 +200,7 @@ function renderFormRating(icon) {
 
   for (let i = 1; i <= 5; i++) {
     const btn = document.createElement("button");
-    btn.type = "button"; // prevents form submit on click
+    btn.type = "button";
     btn.className = "rating-icon";
     btn.dataset.value = i;
     btn.setAttribute("aria-label", "Rate " + i + " of 5");

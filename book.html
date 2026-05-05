@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="page-title">Books — Crowned Reads</title>
-
   <meta name="description" content="Detailed reviews and reader thoughts on the most beloved romantasy novels — explore Caraval, ACOTAR, Fourth Wing and more on Crowned Reads." />
-<meta name="theme-color" content="#FAF3E7" />
+  <meta name="theme-color" content="#FAF3E7" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,21 +26,28 @@
       </a>
 
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
-  <span></span>
-  <span></span>
-  <span></span>
-       </button>
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <nav class="main-nav" id="main-nav">
         <ul class="main-nav__list">
           <li><a href="index.html" class="main-nav__link">Home</a></li>
           <li><a href="book.html?id=caraval" class="main-nav__link main-nav__link--active">Books</a></li>
-          <li><a href="quiz.html" class="main-nav__link">Quiz</a></li>
           <li><a href="about.html" class="main-nav__link">About</a></li>
+          <li><a href="quiz.html" class="main-nav__link">Quiz</a></li>
         </ul>
       </nav>
+
       <div class="search">
-        <input type="text" class="search__input" id="search-input" placeholder="Search books..." autocomplete="off" />
+        <input
+          type="text"
+          class="search__input"
+          id="search-input"
+          placeholder="Search books..."
+          autocomplete="off"
+        />
         <div class="search__results" id="search-results" hidden></div>
       </div>
     </div>
@@ -53,7 +59,7 @@
 
       <a href="index.html" class="back-link">← Back to all books</a>
 
-      <!-- BOOK SELECTOR — quick links to other books -->
+      <!-- Quick selector to jump between books -->
       <div class="book-selector" id="book-selector">
         <a href="book.html?id=caraval" class="book-selector__link" data-id="caraval">🎭 Caraval</a>
         <a href="book.html?id=once-upon" class="book-selector__link" data-id="once-upon">🌹 Once Upon a Broken Heart</a>
@@ -64,7 +70,7 @@
       <div class="book-detail__layout">
 
         <div class="book-detail__cover" id="book-cover">
-          <img id="book-cover-img" src="" alt="" onerror="this.style.display='none'" />
+          <img id="book-cover-img" alt="" />
         </div>
 
         <div class="book-detail__info">
@@ -86,7 +92,6 @@
         <h2 class="section-title">Reader Reviews</h2>
         <p class="section-subtitle">Share your thoughts with fellow readers.</p>
 
-        <!-- Comment Form (rating will be injected by JS) -->
         <form class="comment-form" id="comment-form">
           <div class="comment-form__row">
             <input type="text" class="comment-form__input" id="comment-name" placeholder="Your name" required />
@@ -95,7 +100,6 @@
             <textarea class="comment-form__textarea" id="comment-text" placeholder="Share your thoughts... (include the word 'spoiler' to blur sensitive parts)" rows="4" required></textarea>
           </div>
 
-          <!-- Themed rating inside the form -->
           <div class="comment-form__row">
             <label class="comment-form__label">Your rating:</label>
             <div class="book-rating book-rating--form" id="form-rating">

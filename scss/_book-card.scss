@@ -55,9 +55,11 @@
       height: 100%;
       object-fit: cover;
       object-position: center;
+      position: relative;
+      z-index: 1;
     }
 
-    // Gradient fallbacks (when image is missing)
+    // Gradient fallbacks (visible only when image fails or is loading)
     &--caraval {
       background: linear-gradient(135deg, $color-rose 0%, $color-plum 100%);
     }
@@ -71,7 +73,7 @@
       background: linear-gradient(135deg, $color-lavender 0%, $color-plum 100%);
     }
 
-    // Decorative star overlay (visible only when image fails)
+    // Decorative star — visible only when no image
     &::after {
       content: '✦';
       position: absolute;
@@ -79,11 +81,6 @@
       color: rgba(white, 0.25);
       pointer-events: none;
       z-index: 0;
-    }
-
-    img {
-      position: relative;
-      z-index: 1;
     }
   }
 
@@ -158,6 +155,7 @@
     color: white;
   }
 }
+
 // ============== BOOK DETAIL PAGE ==============
 .back-link {
   display: inline-block;
@@ -197,6 +195,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       position: relative;
       z-index: 1;
     }
@@ -254,24 +253,47 @@
   }
 }
 
+// ============== BOOK SELECTOR (top of detail page) ==============
+.book-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  padding: 0.75rem;
+  background-color: rgba($color-blush, 0.25);
+  border-radius: 50px;
+  justify-content: center;
+
+  &__link {
+    padding: 0.5rem 1.15rem;
+    border-radius: 50px;
+    font-family: $font-body;
+    font-size: 0.9rem;
+    color: $color-mauve;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: white;
+      color: $color-plum;
+    }
+
+    &--active {
+      background-color: $color-plum;
+      color: white;
+
+      &:hover {
+        background-color: $color-plum;
+        color: white;
+      }
+    }
+  }
+}
+
 // ============== COMMENTS ==============
 .comments {
   margin-top: 3rem;
-}
-
-.comment-form {
-  background-color: rgba($color-blush, 0.3);
-  border: 1px dashed rgba($color-mauve, 0.4);
-  border-radius: $radius-md;
-  padding: 2rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
-
-  &__placeholder {
-    color: $color-mauve;
-    font-style: italic;
-    margin: 0;
-  }
 }
 
 .comment {
@@ -309,180 +331,71 @@
     line-height: 1.7;
     margin: 0;
   }
-}
 
-// ============== ABOUT PAGE ==============
-.about {
-  padding: 3rem 0 5rem;
+  &__rating {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+    font-size: 1.15rem;
+    letter-spacing: 0.15em;
+    padding: 0.3rem 0.85rem;
+    background-color: rgba($color-blush, 0.45);
+    border-radius: 50px;
+    border: 1px solid rgba($color-gold, 0.4);
 
-  &__title {
-    text-align: center;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-
-  &__content {
-    max-width: 720px;
-    margin: 0 auto;
-
-    p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 1.25rem;
-
-      em {
-        font-style: italic;
-        color: $color-mauve;
-      }
-
-      strong {
-        color: $color-plum;
-        font-weight: 600;
-      }
-    }
-
-    h2 {
-      font-size: 1.75rem;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-  }
-
-  &__list {
-    list-style: none;
-    text-align: center;
-    margin-bottom: 2rem;
-
-    li {
-      font-family: $font-heading;
+    &-score {
+      font-family: $font-body;
+      font-size: 0.8rem;
       font-style: italic;
       color: $color-mauve;
-      padding: 0.4rem 0;
-      font-size: 1.1rem;
-
-      &::before {
-        content: '✦ ';
-        color: $color-gold;
-      }
+      letter-spacing: normal;
+      margin-left: 0.35rem;
     }
   }
 }
-// ============== ABOUT — AUTHOR PORTRAIT ==============
-.about__author {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2.5rem;
-  align-items: center;
-  margin-top: 2rem;
-  padding: 2rem 0;
-}
 
-.about__portrait {
-  width: 220px;
-  height: 220px;
+// ============== SPOILER ==============
+.comment--spoiler {
   position: relative;
-  border-radius: $radius-md;
-  overflow: hidden;
-  box-shadow: $shadow-medium;
 
-  // Outer gold frame
-  border: 3px solid $color-gold;
+  .comment__text {
+    filter: blur(6px);
+    user-select: none;
+    transition: filter 0.4s ease;
+    cursor: pointer;
+  }
 
-  // Inner cream border (vintage portrait look)
   &::before {
-    content: '';
+    content: "⚠ Click to reveal spoiler";
     position: absolute;
-    inset: 6px;
-    border: 1px solid rgba($color-cream, 0.85);
-    border-radius: calc(#{$radius-md} - 4px);
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  // Decorative corner stars
-  &::after {
-    content: '✦';
-    position: absolute;
-    top: -14px;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: $color-cream;
-    color: $color-gold;
+    transform: translate(-50%, -50%);
+    font-family: $font-heading;
+    font-style: italic;
     font-size: 1.1rem;
-    padding: 0 0.5rem;
-    z-index: 3;
+    color: $color-plum;
+    background-color: rgba($color-cream, 0.95);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    border: 1px solid $color-gold;
+    pointer-events: none;
+    z-index: 2;
+    transition: opacity 0.3s ease;
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    transition: transform 0.6s ease;
-  }
+  &--revealed {
+    .comment__text {
+      filter: blur(0);
+      cursor: default;
+    }
 
-  &:hover img {
-    transform: scale(1.05);
-  }
-}
-
-.about__bio {
-  p {
-    margin-bottom: 1rem;
-
-    &:last-child {
-      margin-bottom: 0;
+    &::before {
+      opacity: 0;
     }
   }
 }
 
-// ============== BOOK RATING ==============
-.book-rating {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  margin-bottom: 1.25rem;
-  flex-wrap: wrap;
-}
-
-.rating-icon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.25rem;
-  padding: 0.15rem 0.2rem;
-  opacity: 0.3;
-  filter: grayscale(60%);
-  transition: opacity 0.2s ease, transform 0.2s ease, filter 0.2s ease;
-  font-family: inherit;
-
-  &:hover {
-    transform: scale(1.2);
-  }
-
-  // "Filled" state — set by JavaScript
-  &--filled {
-    opacity: 1;
-    filter: grayscale(0%);
-  }
-
-  // Hover preview state — set by JavaScript
-  &--preview {
-    opacity: 0.7;
-    filter: grayscale(20%);
-  }
-}
-
-.rating-text {
-  margin-left: 0.5rem;
-  font-size: 0.85rem;
-  font-style: italic;
-  color: $color-mauve;
-}
-
-// ============== COMMENT FORM (Stage 4.4) ==============
+// ============== COMMENT FORM ==============
 .comment-form {
   background-color: rgba($color-blush, 0.25);
   border: 1px solid rgba($color-mauve, 0.2);
@@ -504,6 +417,15 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+  }
+
+  &__label {
+    display: block;
+    font-family: $font-body;
+    font-size: 0.95rem;
+    color: $color-plum;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
   }
 
   &__input,
@@ -572,87 +494,7 @@
   }
 }
 
-// ============== SPOILER ==============
-.comment--spoiler {
-  position: relative;
-
-  .comment__text {
-    filter: blur(6px);
-    user-select: none;
-    transition: filter 0.4s ease;
-    cursor: pointer;
-  }
-
-  &::before {
-    content: "⚠ Click to reveal spoiler";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: $font-heading;
-    font-style: italic;
-    font-size: 1.1rem;
-    color: $color-plum;
-    background-color: rgba($color-cream, 0.95);
-    padding: 0.5rem 1.25rem;
-    border-radius: 50px;
-    border: 1px solid $color-gold;
-    pointer-events: none;
-    z-index: 2;
-    transition: opacity 0.3s ease;
-  }
-
-  &--revealed {
-    .comment__text {
-      filter: blur(0);
-      cursor: default;
-    }
-
-    &::before {
-      opacity: 0;
-    }
-  }
-}
-
-// ============== BOOK SELECTOR (top of detail page) ==============
-.book-selector {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2.5rem;
-  padding: 0.75rem;
-  background-color: rgba($color-blush, 0.25);
-  border-radius: 50px;
-  justify-content: center;
-
-  &__link {
-    padding: 0.5rem 1.15rem;
-    border-radius: 50px;
-    font-family: $font-body;
-    font-size: 0.9rem;
-    color: $color-mauve;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-
-    &:hover {
-      background-color: white;
-      color: $color-plum;
-    }
-
-    &--active {
-      background-color: $color-plum;
-      color: white;
-
-      &:hover {
-        background-color: $color-plum;
-        color: white;
-      }
-    }
-  }
-}
-
-// ============== RATING (re-added for comment form) ==============
+// ============== BOOK RATING ==============
 .book-rating {
   display: flex;
   align-items: center;
@@ -697,38 +539,126 @@
   color: $color-mauve;
 }
 
-.comment-form__label {
-  display: block;
-  font-family: $font-body;
-  font-size: 0.95rem;
-  color: $color-plum;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+// ============== ABOUT PAGE ==============
+.about {
+  padding: 3rem 0 5rem;
+
+  &__title {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    max-width: 720px;
+    margin: 0 auto;
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+
+      em {
+        font-style: italic;
+        color: $color-mauve;
+      }
+
+      strong {
+        color: $color-plum;
+        font-weight: 600;
+      }
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    li {
+      font-family: $font-heading;
+      font-style: italic;
+      color: $color-mauve;
+      padding: 0.4rem 0;
+      font-size: 1.1rem;
+
+      &::before {
+        content: '✦ ';
+        color: $color-gold;
+      }
+    }
+  }
 }
 
-// Rating shown inside posted comments
-.comment__rating {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  letter-spacing: 0.1em;
+// ============== ABOUT — AUTHOR PORTRAIT ==============
+.about__author {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 2rem 0;
 }
 
-.comment__rating {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  font-size: 1.15rem;
-  letter-spacing: 0.15em;
-  padding: 0.3rem 0.85rem;
-  background-color: rgba($color-blush, 0.45);
-  border-radius: 50px;
-  border: 1px solid rgba($color-gold, 0.4);
+.about__portrait {
+  width: 220px;
+  height: 220px;
+  position: relative;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-medium;
+  border: 3px solid $color-gold;
 
-  &-score {
-    font-family: $font-body;
-    font-size: 0.8rem;
-    font-style: italic;
-    color: $color-mauve;
-    letter-spacing: normal;
-    margin-left: 0.35rem;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba($color-cream, 0.85);
+    border-radius: calc(#{$radius-md} - 4px);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: '✦';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $color-cream;
+    color: $color-gold;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+    z-index: 3;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.about__bio {
+  p {
+    margin-bottom: 1rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
